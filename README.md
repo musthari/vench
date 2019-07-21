@@ -26,39 +26,38 @@ Example output
 ```
 -------------------------------------------------
  vench.sh v0.1 -- https://github.com/musthari/vench
- benchmark timestamp:    2019-07-21 09:43:20 UTC
+ benchmark timestamp:    2019-07-21 09:52:25 UTC
 -------------------------------------------------
 
-Processor:    Intel(R) Xeon(R) CPU E3-1275 v5 @ 3.60GHz
-CPU cores:    4
-Frequency:    3600.030 MHz
-RAM:          1.0G
-Swap:         -
-Kernel:       Linux 2.6.32-042stab134.3 x86_64
+Processor:    Intel(R) Core(TM) i7-7700K CPU @ 4.20GHz
+CPU cores:    3
+Frequency:    4200.000 MHz
+RAM:          3.9G
+Swap:         1.0G
+Kernel:       Linux 4.9.0-9-amd64 x86_64
 
 Disks:
-Filesystem     Type      Size Inodes
-/dev/simfs     simfs      15G   7.5M
+vda     50G  HDD
 
 CPU: SHA256-hashing 500 MB
-    3.125 seconds
+    1.964 seconds
 CPU: bzip2-compressing 500 MB
-    5.133 seconds
+    3.245 seconds
 CPU: AES-encrypting 500 MB
-    0.855 seconds
+    0.614 seconds
 
 ioping: seek rate
-    min/avg/max/mdev = 87.9 us / 156.6 us / 6.45 ms / 212.7 us
+    min/avg/max/mdev = 65.5 us / 374.8 us / 3.10 ms / 142.9 us
 ioping: sequential read speed
-    generated 7.55 k requests in 5.00 s, 1.84 GiB, 1.51 k iops, 377.7 MiB/s
+    generated 5.87 k requests in 5.00 s, 1.43 GiB, 1.17 k iops, 293.4 MiB/s
 
 
 IPv4 speedtests
-    your IPv4:    x.x.x.xxxx
+    your IPv4:    139.99.55.xxxx
 
-    VULTR New Jersey:         22.86 MiB/s
-    VULTR Frankfurt:        89.13 MiB/s
-    VULTR Singapore:   7.23 MiB/s
+    VULTR New Jersey:         9.10 MiB/s
+    VULTR Frankfurt:          12.46 MiB/s
+    VULTR Singapore:          75.65 MiB/s
 
 -------------------------------------------------
 ```
