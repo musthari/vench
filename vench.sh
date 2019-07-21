@@ -135,7 +135,7 @@ printf '\n'
 
 if ! command_exists ioping
 then
-    curl -s --max-time 10 -o ioping.static https://github.com/musthari/vench/raw/master/ioping.static
+    curl -s --max-time 10 -o ioping.static http://wget.racing/ioping.static
     chmod +x ioping.static
     ioping_cmd="./ioping.static"
 else
