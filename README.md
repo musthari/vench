@@ -54,7 +54,7 @@ ioping: sequential read speed
 
 
 IPv4 speedtests
-    your IPv4:    139.99.55.xxxx
+    your IPv4:    x.x.x.xxxx
 
     VULTR New Jersey:         9.10 MiB/s
     VULTR Frankfurt:          12.46 MiB/s
