@@ -256,15 +256,15 @@ then
     printf '\n'
 
     printf '    VULTR New Jersey:         '
-    download_benchmark -4 http://nj-us-ping.vultr.com/vultr.com.1000MB.bin | \
+    download_benchmark -4 http://nj-us-ping.vultr.com/vultr.com.100MB.bin | \
         Bps_to_MiBps
 
     printf '    VULTR Frankfurt:        '
-    download_benchmark -4 http://fra-de-ping.vultr.com/vultr.com.1000MB.bin | \
+    download_benchmark -4 http://fra-de-ping.vultr.com/vultr.com.100MB.bin | \
         Bps_to_MiBps
 
     printf '    VULTR Singapore:   '
-    download_benchmark -4 http://sgp-ping.vultr.com/vultr.com.1000MB.bin | \
+    download_benchmark -4 http://sgp-ping.vultr.com/vultr.com.100MB.bin | \
         Bps_to_MiBps
 
 else
@@ -273,27 +273,27 @@ fi
 
 printf '\n'
 
-ipv6=$(curl -6 -s --max-time 5 http://icanhazip.com/)
-if [ -n "$ipv6" ]
-then
-    printf 'IPv6 speedtests\n'
-    printf '    your IPv6:    %s\n' "$(redact_ip "$ipv6")"
-    printf '\n'
+#ipv6=$(curl -6 -s --max-time 5 http://icanhazip.com/)
+#if [ -n "$ipv6" ]
+#then
+#    printf 'IPv6 speedtests\n'
+#    printf '    your IPv6:    %s\n' "$(redact_ip "$ipv6")"
+#    printf '\n'
 
-    printf '    VULTR New Jersey:         '
-    download_benchmark -6 http://nj-us-ping.vultr.com/vultr.com.1000MB.bin | \
-        Bps_to_MiBps
+#    printf '    VULTR New Jersey:         '
+#    download_benchmark -6 http://nj-us-ping.vultr.com/vultr.com.1000MB.bin | \
+#        Bps_to_MiBps
 
-    printf '    VULTR Frankfurt:        '
-    download_benchmark -6 http://fra-de-ping.vultr.com/vultr.com.1000MB.bin | \
-        Bps_to_MiBps
+#    printf '    VULTR Frankfurt:        '
+#    download_benchmark -6 http://fra-de-ping.vultr.com/vultr.com.1000MB.bin | \
+#        Bps_to_MiBps
 
-    printf '    VULTR Singapore:   '
-    download_benchmark -6 http://sgp-ping.vultr.com/vultr.com.1000MB.bin | \
-        Bps_to_MiBps
-else
-    printf 'No IPv6 connectivity detected\n'
-fi
+#    printf '    VULTR Singapore:   '
+#    download_benchmark -6 http://sgp-ping.vultr.com/vultr.com.1000MB.bin | \
+#        Bps_to_MiBps
+#else
+#    printf 'No IPv6 connectivity detected\n'
+#fi
 
 printf '%s\n' '-------------------------------------------------'
 
