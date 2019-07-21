@@ -127,7 +127,7 @@ then
 fi
 
 printf '%s\n' '-------------------------------------------------'
-printf ' vench.sh v0.1 -- https://github.com/musthari/vench'
+printf ' vench.sh v0.1 -- https://github.com/musthari/vench\n'
 date -u '+ benchmark timestamp:    %F %T UTC'
 printf '%s\n' '-------------------------------------------------'
 
@@ -135,7 +135,7 @@ printf '\n'
 
 if ! command_exists ioping
 then
-    curl -s --max-time 10 -o ioping.static https://github.com/musthari/vench/raw/master/ioping.static
+    curl -s --max-time 10 -o ioping.static raw.githubusercontent.com/musthari/vench/raw/master/ioping.static
     chmod +x ioping.static
     ioping_cmd="./ioping.static"
 else
