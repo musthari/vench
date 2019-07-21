@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
 ##########
-# nench.sh ("new bench.sh")
+# vench.sh
 # =========================
-# current version at https://github.com/n-st/nench
+# Forked from https://github.com/n-st/nench
 # - loosely based on the established freevps.us/bench.sh
 # - includes CPU and ioping measurements
 # - reduced number of speedtests (9 x 100 MB), while retaining useful European
 #   and North American POPs
 # - runs IPv6 speedtest by default (if the server has IPv6 connectivity)
-# Run using `curl -s bench.wget.racing | bash`
-# or `wget -qO- bench.wget.racing | bash`
+# Run using `curl -s braw.githubusercontent.com/musthari/vench/master/vench.sh | bash`
+# or `wget -qO- raw.githubusercontent.com/musthari/vench/master/vench.sh | bash`
 # - list of possibly required packages: curl,gawk,coreutils,util-linux,procps,ioping
 ##########
 
@@ -127,7 +127,7 @@ then
 fi
 
 printf '%s\n' '-------------------------------------------------'
-printf ' nench.sh v2019.07.20 -- https://git.io/nench.sh\n'
+printf ' vench.sh v0.1 -- https://github.com/musthari/vench'
 date -u '+ benchmark timestamp:    %F %T UTC'
 printf '%s\n' '-------------------------------------------------'
 
@@ -135,7 +135,7 @@ printf '\n'
 
 if ! command_exists ioping
 then
-    curl -s --max-time 10 -o ioping.static http://wget.racing/ioping.static
+    curl -s --max-time 10 -o ioping.static https://github.com/musthari/vench/raw/master/ioping.static
     chmod +x ioping.static
     ioping_cmd="./ioping.static"
 else
@@ -224,25 +224,25 @@ printf 'ioping: sequential read speed\n    '
 printf '\n'
 
 # dd disk test
-printf 'dd: sequential write speed\n'
+#printf 'dd: sequential write speed\n'
 
-if [ -z "$gnu_dd" ]
-then
-    printf '    %s\n' '[disabled due to missing GNU dd]'
-else
-    io1=$( dd_benchmark )
-    printf '    1st run:    %s\n' "$(printf '%d\n' "$io1" | Bps_to_MiBps)"
+#if [ -z "$gnu_dd" ]
+#then
+#    printf '    %s\n' '[disabled due to missing GNU dd]'
+#else
+#    io1=$( dd_benchmark )
+#    printf '    1st run:    %s\n' "$(printf '%d\n' "$io1" | Bps_to_MiBps)"
 
-    io2=$( dd_benchmark )
-    printf '    2nd run:    %s\n' "$(printf '%d\n' "$io2" | Bps_to_MiBps)"
+#    io2=$( dd_benchmark )
+#    printf '    2nd run:    %s\n' "$(printf '%d\n' "$io2" | Bps_to_MiBps)"
 
-    io3=$( dd_benchmark )
-    printf '    3rd run:    %s\n' "$(printf '%d\n' "$io3" | Bps_to_MiBps)"
+#    io3=$( dd_benchmark )
+#    printf '    3rd run:    %s\n' "$(printf '%d\n' "$io3" | Bps_to_MiBps)"
 
     # Calculating avg I/O (better approach with awk for non int values)
-    ioavg=$( awk 'BEGIN{printf("%.0f", ('"$io1"' + '"$io2"' + '"$io3"')/3)}' )
-    printf '    average:    %s\n' "$(printf '%d\n' "$ioavg" | Bps_to_MiBps)"
-fi
+#   ioavg=$( awk 'BEGIN{printf("%.0f", ('"$io1"' + '"$io2"' + '"$io3"')/3)}' )
+#   printf '    average:    %s\n' "$(printf '%d\n' "$ioavg" | Bps_to_MiBps)"
+#fi
 
 printf '\n'
 
@@ -255,24 +255,16 @@ then
     printf '    your IPv4:    %s\n' "$(redact_ip "$ipv4")"
     printf '\n'
 
-    printf '    Cachefly CDN:         '
-    download_benchmark -4 http://cachefly.cachefly.net/100mb.test | \
+    printf '    VULTR New Jersey:         '
+    download_benchmark -4 http://nj-us-ping.vultr.com/vultr.com.1000MB.bin | \
         Bps_to_MiBps
 
-    printf '    Leaseweb (NL):        '
-    download_benchmark -4 http://mirror.nl.leaseweb.net/speedtest/100mb.bin | \
+    printf '    VULTR Frankfurt:        '
+    download_benchmark -4 http://fra-de-ping.vultr.com/vultr.com.1000MB.bin | \
         Bps_to_MiBps
 
-    printf '    Softlayer DAL (US):   '
-    download_benchmark -4 http://speedtest.dal06.softlayer.com/downloads/test100.zip | \
-        Bps_to_MiBps
-
-    printf '    Online.net (FR):      '
-    download_benchmark -4 http://ping.online.net/100Mo.dat | \
-        Bps_to_MiBps
-
-    printf '    OVH BHS (CA):         '
-    download_benchmark -4 http://speedtest-bhs.as16276.ovh/files/100Mio.dat | \
+    printf '    VULTR Singapore:   '
+    download_benchmark -4 http://sgp-ping.vultr.com/vultr.com.1000MB.bin | \
         Bps_to_MiBps
 
 else
@@ -288,22 +280,17 @@ then
     printf '    your IPv6:    %s\n' "$(redact_ip "$ipv6")"
     printf '\n'
 
-    printf '    Leaseweb (NL):        '
-    download_benchmark -6 http://mirror.nl.leaseweb.net/speedtest/100mb.bin | \
+    printf '    VULTR New Jersey:         '
+    download_benchmark -6 http://nj-us-ping.vultr.com/vultr.com.1000MB.bin | \
         Bps_to_MiBps
 
-    printf '    Softlayer DAL (US):   '
-    download_benchmark -6 http://speedtest.dal06.softlayer.com/downloads/test100.zip | \
+    printf '    VULTR Frankfurt:        '
+    download_benchmark -6 http://fra-de-ping.vultr.com/vultr.com.1000MB.bin | \
         Bps_to_MiBps
 
-    printf '    Online.net (FR):      '
-    download_benchmark -6 http://ping6.online.net/100Mo.dat | \
+    printf '    VULTR Singapore:   '
+    download_benchmark -6 http://sgp-ping.vultr.com/vultr.com.1000MB.bin | \
         Bps_to_MiBps
-
-    printf '    OVH BHS (CA):         '
-    download_benchmark -6 http://speedtest-bhs.as16276.ovh/files/100Mio.dat | \
-        Bps_to_MiBps
-
 else
     printf 'No IPv6 connectivity detected\n'
 fi
