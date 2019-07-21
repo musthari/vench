@@ -12,6 +12,7 @@ Forked from https://github.com/n-st/nench
 - successfully tested on Arch Linux, Debian, FreeBSD, and Ubuntu
 - reduced number of speedtests to 3 x 100MB
 - IPv6 speedtest removed
+- dd test removed
 
 Usage example
 -------------
