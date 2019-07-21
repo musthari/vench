@@ -259,11 +259,11 @@ then
     download_benchmark -4 http://nj-us-ping.vultr.com/vultr.com.100MB.bin | \
         Bps_to_MiBps
 
-    printf '    VULTR Frankfurt:        '
+    printf '    VULTR Frankfurt:          '
     download_benchmark -4 http://fra-de-ping.vultr.com/vultr.com.100MB.bin | \
         Bps_to_MiBps
 
-    printf '    VULTR Singapore:   '
+    printf '    VULTR Singapore:          '
     download_benchmark -4 http://sgp-ping.vultr.com/vultr.com.100MB.bin | \
         Bps_to_MiBps
 
